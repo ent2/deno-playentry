@@ -13,7 +13,7 @@ interface ProjectConstructor {
 }
 /** 엔트리 작품을 나타낸다. */
 export default class Project implements ProjectConstructor {
-    /** 작품의 식별자 */
+    /** 작품의 식별자. 24자리의 16진수. */
     id
     /** 작품의 제작자 */
     owner
