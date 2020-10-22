@@ -9,12 +9,18 @@ interface UserConstructor {
     description: string
     avatarURL: string
 }
+/** 엔트리 유저를 나타낸다. */
 export default class User implements UserConstructor {
     language
+    /** 유저의 신분. */
     role
+    /** 유저의 식별자. 24자리의 16진수. */
     id
+    /** 유저의 닉네임(아이디). */
     username
+    /** 유저가 작성한 마이페이지 설명. */
     description
+    /** 유저의 프로필 사진 URL. */
     avatarURL
     constructor(info: UserConstructor) {
         this.language = info.language
@@ -24,7 +30,7 @@ export default class User implements UserConstructor {
         this.description = info.description
         this.avatarURL = info.avatarURL
     }
-
+    /** 유저가 제작한 작품들의 목록을 가져온다. `sort` 옵션이 `"complexity"`나 `"staffPicked"`인 경우 일부 작품이 포함되지 않는다. */
     async findProjects(options?: {
         sort?: "updated" | "recent" | "complexity" | "staffPicked" | "childCnt" | "recentLikeCnt"
         rows?: number

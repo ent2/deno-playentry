@@ -11,15 +11,25 @@ interface ProjectConstructor {
     commentCount: number
     childCount: number
 }
+/** 엔트리 작품을 나타낸다. */
 export default class Project implements ProjectConstructor {
+    /** 작품의 식별자 */
     id
+    /** 작품의 제작자 */
     owner
+    /** 작품의 썸네일 이미지 URL */
     thumbURL
+    /** 작품이 마지막으로 업데이트된 시각 */
     updated
+    /** 작품의 조회수 */
     visitCount
+    /** 작품의 좋아요 수 */
     likeCount
+    /** 작품의 최근(3일간) 받은 좋아요 수 */
     recentLikeCount
+    /** 작품의 댓글 수 */
     commentCount
+    /** 작품의 사본 수 */
     childCount
     constructor(info: ProjectConstructor) {
         this.id = info.id
