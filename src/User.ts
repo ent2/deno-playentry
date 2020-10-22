@@ -46,6 +46,7 @@ export default class User implements UserConstructor {
         const projects = res.data.map(project => {
             const info = {
                 id: project._id,
+                name: project.name,
                 owner: this,
                 thumbURL: "https://playentry.org" + project.thumb,
                 updated: project.updated,

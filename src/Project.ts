@@ -2,6 +2,7 @@ import User from "./User.ts"
 
 interface ProjectConstructor {
     id: string
+    name: string
     owner: User
     thumbURL: string
     updated: Date
@@ -15,6 +16,8 @@ interface ProjectConstructor {
 export default class Project implements ProjectConstructor {
     /** 작품의 식별자. 24자리의 16진수. */
     id
+    /** 작품의 이름. */
+    name
     /** 작품의 제작자 */
     owner
     /** 작품의 썸네일 이미지 URL */
@@ -33,6 +36,7 @@ export default class Project implements ProjectConstructor {
     childCount
     constructor(info: ProjectConstructor) {
         this.id = info.id
+        this.name = info.name
         this.owner = info.owner
         this.thumbURL = info.thumbURL
         this.updated = info.updated
