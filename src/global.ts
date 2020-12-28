@@ -25,10 +25,11 @@ export async function getRankedProjects(options: {
     const res: any[] = await basicFetch("rankProject", {
         type: options.type,
         limit: String(
-            options.rows
-                || options.type == "staff"
+            options.rows || (
+                options.type == "staff"
                     ? 3
                     : 9
+            )
         ),
     })
     const projects = res.map(item => {
