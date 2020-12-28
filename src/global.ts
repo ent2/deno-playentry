@@ -35,7 +35,10 @@ export async function getRankedProjects(options: {
         return new Project({
             id: item.project._id,
             name: item.project.name,
-            owner: item.user,
+            owner: new User({
+                id: item.project.user._id,
+                username: item.project.user.username,
+            }),
             thumbURL: "https://playentry.org/" + item.project.thumb,
             visitCount: item.project.visit,
             likeCount: item.project.likeCnt,

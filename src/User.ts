@@ -2,17 +2,17 @@ import { basicFetch } from "./util.ts"
 import Project from "./Project.ts"
 
 interface UserConstructor {
-    language: string
+    language?: string
     /** 유저의 신분. */
-    role: "member" | "teacher" | "admin"
+    role?: "member" | "teacher" | "admin"
     /** 유저의 식별자. 24자리의 16진수. */
     id: string
     /** 유저의 닉네임(아이디). */
     username: string
     /** 유저가 작성한 마이페이지 설명. */
-    description: string
+    description?: string
     /** 유저의 프로필 사진 URL. */
-    avatarURL: string
+    avatarURL?: string
 }
 /** 엔트리 유저를 나타낸다. */
 export default class User implements UserConstructor  {
