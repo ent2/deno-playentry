@@ -3,24 +3,24 @@ import Project from "./Project.ts"
 
 interface UserConstructor {
     language: string
+    /** 유저의 신분. */
     role: "member" | "teacher" | "admin"
+    /** 유저의 식별자. 24자리의 16진수. */
     id: string
+    /** 유저의 닉네임(아이디). */
     username: string
+    /** 유저가 작성한 마이페이지 설명. */
     description: string
+    /** 유저의 프로필 사진 URL. */
     avatarURL: string
 }
 /** 엔트리 유저를 나타낸다. */
 export default class User implements UserConstructor {
     language
-    /** 유저의 신분. */
     role
-    /** 유저의 식별자. 24자리의 16진수. */
     id
-    /** 유저의 닉네임(아이디). */
     username
-    /** 유저가 작성한 마이페이지 설명. */
     description
-    /** 유저의 프로필 사진 URL. */
     avatarURL
     constructor(info: UserConstructor) {
         this.language = info.language
