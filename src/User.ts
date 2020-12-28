@@ -15,7 +15,7 @@ interface UserConstructor {
     avatarURL: string
 }
 /** 엔트리 유저를 나타낸다. */
-export default class User implements UserConstructor {
+export default class User implements UserConstructor  {
     language
     role
     id
@@ -48,7 +48,7 @@ export default class User implements UserConstructor {
                 id: project._id,
                 name: project.name,
                 owner: this,
-                thumbURL: "https://playentry.org" + project.thumb,
+                thumbURL: "https://playentry.org/" + project.thumb,
                 updated: project.updated,
                 visitCount: project.visit,
                 likeCount: project.likeCnt,
