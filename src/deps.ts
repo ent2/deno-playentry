@@ -1,0 +1,1 @@
+export { Lw, LwInterface } from "https://denopkg.com/gnlow/lazywrap@main/mod.ts"

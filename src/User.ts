@@ -1,4 +1,6 @@
-import { basicFetch } from "./util.ts"
+import { Lw, LwInterface } from "./deps.ts"
+
+import { basicFetch, LwProp } from "./util.ts"
 import Project from "./Project.ts"
 
 interface UserConstructor {
@@ -14,21 +16,22 @@ interface UserConstructor {
     /** 유저의 프로필 사진 URL. */
     avatarURL?: string
 }
+type _LwProp<N extends keyof UserConstructor> = LwProp<UserConstructor, N>
 /** 엔트리 유저를 나타낸다. */
-export default class User implements UserConstructor  {
-    language
-    role
+export default class User implements LwInterface<UserConstructor> {
+    language: _LwProp<"language">
+    role: _LwProp<"role">
     id
     username
-    description
-    avatarURL
+    description: _LwProp<"description">
+    avatarURL: _LwProp<"avatarURL">
     constructor(info: UserConstructor) {
-        this.language = info.language
-        this.role = info.role
+        this.language = info.language!
+        this.role = info.role!
         this.id = info.id
         this.username = info.username,
-        this.description = info.description
-        this.avatarURL = info.avatarURL
+        this.description = info.description!
+        this.avatarURL = info.avatarURL!
     }
     /** 유저가 제작한 작품들의 목록을 가져온다. `sort` 옵션이 `"complexity"`나 `"staffPicked"`인 경우 일부 작품이 포함되지 않는다. */
     async findProjects(options?: {
