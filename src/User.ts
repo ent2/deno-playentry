@@ -63,6 +63,7 @@ export default class User implements LwInterface<UserConstructor> {
         })
         return projects
     }
+    /** 유저의 닉네임(아이디)으로 정보를 불러온다. 유저가 존재하지 않는다면 `undefined`를 반환한다. */
     async getInfo() {
         const res = await basicFetch(`getUserByUsername/${this.username}`)
         if (res) {
