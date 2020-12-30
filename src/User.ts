@@ -19,12 +19,12 @@ interface UserConstructor {
 type _LwProp<N extends keyof UserConstructor> = LwProp<UserConstructor, N>
 /** 엔트리 유저를 나타낸다. */
 export default class User implements LwInterface<UserConstructor> {
-    language: _LwProp<"language">
-    role: _LwProp<"role">
+    @Lw("getInfo") language: _LwProp<"language">
+    @Lw("getInfo") role: _LwProp<"role">
     id
     username
-    description: _LwProp<"description">
-    avatarURL: _LwProp<"avatarURL">
+    @Lw("getInfo") description: _LwProp<"description">
+    @Lw("getInfo") avatarURL: _LwProp<"avatarURL">
     constructor(info: UserConstructor) {
         this.language = info.language!
         this.role = info.role!
@@ -62,5 +62,18 @@ export default class User implements LwInterface<UserConstructor> {
             return new Project(info)
         })
         return projects
+    }
+    async getInfo() {
+        const res = await basicFetch(`getUserByUsername/${this.username}`)
+        if (res) {
+            let info = Object.assign(res, {
+                id: res._id,
+                avatarURL: 
+                    res.avatarImage 
+                        ? `https://playentry.org/uploads/profile/${res._id.substring(0, 2)}/${res._id.substring(2, 4)}/avatar_${res._id}.png`
+                        : "https://playentry.org/img/assets/avatar_img.png"
+            })
+            Object.assign(this, info)
+        }
     }
 }
