@@ -8,7 +8,7 @@ interface UserConstructor {
     /** 유저의 신분. */
     role?: "member" | "teacher" | "admin"
     /** 유저의 식별자. 24자리의 16진수. */
-    id: string
+    id?: string
     /** 유저의 닉네임(아이디). */
     username: string
     /** 유저가 작성한 마이페이지 설명. */
@@ -21,14 +21,14 @@ type _LwProp<N extends keyof UserConstructor> = LwProp<UserConstructor, N>
 export default class User implements LwInterface<UserConstructor> {
     @Lw("getInfo") language: _LwProp<"language">
     @Lw("getInfo") role: _LwProp<"role">
-    id
+    @Lw("getInfo") id: _LwProp<"id">
     username
     @Lw("getInfo") description: _LwProp<"description">
     @Lw("getInfo") avatarURL: _LwProp<"avatarURL">
     constructor(info: UserConstructor) {
         this.language = info.language!
         this.role = info.role!
-        this.id = info.id
+        this.id = info.id!
         this.username = info.username,
         this.description = info.description!
         this.avatarURL = info.avatarURL!
@@ -41,7 +41,7 @@ export default class User implements LwInterface<UserConstructor> {
         const res: {
             data: any[]
         } = await basicFetch("project/find", {
-            user: this.id,
+            user: await this.id,
             sort: options?.sort || "recent",
             rows: options?.rows?.toString() || "0",
             blamed: "false",
