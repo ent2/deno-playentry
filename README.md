@@ -2,7 +2,7 @@
 playentry.org API wrapper for deno
 ## Use
 ```ts
-import { User, Project, getRankedProjects } from "https://raw.githubusercontent.com/ent2/deno-playentry/main/mod.ts"
+import { User, Project, getRankedProjects } from "https://denopkg.com/ent2/deno-playentry@v{VERSION}/mod.ts"
 ```
 ### Load data
 - 데이터는 생성자를 사용할 때 불러오지 않고, 각 속성을 읽을 때 불러옵니다.(Getter)  
