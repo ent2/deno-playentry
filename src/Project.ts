@@ -29,15 +29,15 @@ type _LwProp<N extends keyof ProjectConstructor> = LwProp<ProjectConstructor, N>
 /** 엔트리 작품을 나타낸다. */
 export default class Project implements LwInterface<ProjectConstructor> {
     id
-    @Lw("getinfo") name: _LwProp<"name">
-    @Lw("getinfo") owner: _LwProp<"owner">
-    @Lw("getinfo") thumbURL: _LwProp<"thumbURL">
-    @Lw("getinfo") updated: _LwProp<"updated">
-    @Lw("getinfo") visitCount: _LwProp<"visitCount">
-    @Lw("getinfo") likeCount: _LwProp<"likeCount">
-    @Lw("getinfo") recentLikeCount: _LwProp<"recentLikeCount">
-    @Lw("getinfo") commentCount: _LwProp<"commentCount">
-    @Lw("getinfo") childCount: _LwProp<"childCount">
+    @Lw("getInfo") name: _LwProp<"name">
+    @Lw("getInfo") owner: _LwProp<"owner">
+    @Lw("getInfo") thumbURL: _LwProp<"thumbURL">
+    @Lw("getInfo") updated: _LwProp<"updated">
+    @Lw("getInfo") visitCount: _LwProp<"visitCount">
+    @Lw("getInfo") likeCount: _LwProp<"likeCount">
+    @Lw("getInfo") recentLikeCount: _LwProp<"recentLikeCount">
+    @Lw("getInfo") commentCount: _LwProp<"commentCount">
+    @Lw("getInfo") childCount: _LwProp<"childCount">
     constructor(info: ProjectConstructor) {
         this.id = info.id
         this.name = info.name!
@@ -61,7 +61,7 @@ export default class Project implements LwInterface<ProjectConstructor> {
         this.updated = new Date(res.updated)
         this.visitCount = res.visit
         this.likeCount = res.likeCnt
-        this.recentLikeCount = res.recent
+        this.recentLikeCount = res.recentLikeCnt
         this.commentCount = res.comment
         this.childCount = res.childCnt
     }
